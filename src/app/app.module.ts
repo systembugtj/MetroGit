@@ -22,7 +22,6 @@ import { ReleaseNoteComponent } from './infrastructure/release-note/release-note
 import { AboutPageComponent } from './infrastructure/about-page/about-page.component';
 import { JIRAIssueGuard } from './jira/services/jira-issue-link-guard';
 
-
 const appRoutes: Routes = [
   {
     path: 'settings', component: SettingsPageComponent,
@@ -55,7 +54,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     TagInputModule,

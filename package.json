@@ -4,11 +4,20 @@
   "description": "Metro themed git UI",
   "main": "app/main.js",
   "scripts": {
-    "start": "electron .",
-    "test": "./test.sh",
-    "postinstall": "electron-builder install-app-deps",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder --publish never"
+    "start": "npm run build && electron .",
+    "test": "ng test --config=karma-ci.conf.js",
+    "electron:pack": "electron-builder --dir",
+    "electron:build": "npm run build:prod && electron-builder --publish never",
+    "electron:window": "npm run build:prod && electron-builder build --publish always",
+    "electron:linux": "npm run build:prod && electron-builder build --linux --publish always",
+    "electron:mac": "npm run build:prod && electron-builder build --mac --publish always",
+    "ng": "ng",
+    "build:prod": "ng build --prod --aot=false",
+    "ng:serve": "ng serve",
+    "build": "ng build --prod --base-href /$ROOT/app/frontend/dist/",
+    "ng:test": "ng test",
+    "ng:lint": "ng lint",
+    "ng:e2e": "ng e2e"
   },
   "repository": {
     "type": "git",
@@ -20,49 +29,58 @@
   },
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
-    "electron": "^1.8.4",
-    "electron-builder": "^20.10.0"
-  },
-  "build": {
-    "appId": "com.rhodiumcode.metrogit",
-    "productName": "MetroGit",
-    "directories": {
-      "buildResources": "build"
-    },
-    "publish": {
-      "provider": "github"
-    },
-    "win": {
-      "target": "nsis",
-      "icon": "build/icon.ico"
-    },
-    "mac": {
-      "target": "dmg",
-      "icon": "build/icon.icns",
-      "category": "public.app-category.developer-tools",
-      "publish": {
-        "provider": "github"
-      }
-    },
-    "linux": {
-      "target": "deb",
-      "category": "Development",
-      "publish": {
-        "provider": "github"
-      }
-    },
-    "nsis": {
-      "license": "../LICENSE"
-    },
-    "extends": null
+    "@angular-devkit/build-angular": "^0.13.6",
+    "@angular/cli": "^7.3.6",
+    "@angular/compiler-cli": "^7.2.10",
+    "@angular/language-service": "^7.2.10",
+    "@types/d3": "^5.7.1",
+    "@types/jasmine": "~3.3.12",
+    "@types/jasminewd2": "~2.0.6",
+    "@types/node": "^11.12.0",
+    "codelyzer": "^5.0.0-beta.2",
+    "electron": "^4.1.1",
+    "electron-builder": "^20.39.0",
+    "jasmine-core": "~3.3.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~4.0.1",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "^2.0.5",
+    "karma-jasmine": "~2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.0",
+    "protractor": "~6.0.0",
+    "ts-node": "~8.0.3",
+    "tslint": "~5.14.0",
+    "typescript": "3.1.1"
   },
   "dependencies": {
+    "@angular/animations": "^7.2.10",
+    "@angular/cdk": "^7.3.6",
+    "@angular/common": "^7.2.10",
+    "@angular/compiler": "^7.2.10",
+    "@angular/core": "^7.2.10",
+    "@angular/forms": "^7.2.10",
+    "@angular/http": "^7.2.10",
+    "@angular/platform-browser": "^7.2.10",
+    "@angular/platform-browser-dynamic": "^7.2.10",
+    "@angular/router": "^7.2.10",
+    "@ng-bootstrap/ng-bootstrap": "^4.1.0",
+    "angular2-hotkeys": "^2.1.4",
+    "angular2-notifications": "^2.0.0",
+    "animate.css": "^3.7.0",
     "axios": "^0.18.0",
-    "electron-updater": "^3.0.3",
-    "get-folder-size": "^2.0.0",
-    "keytar": "^4.2.1",
-    "nodegit": "^0.22.0",
+    "core-js": "2.6.1",
+    "d3": "^5.9.2",
+    "electron-updater": "^4.0.6",
+    "get-folder-size": "^2.0.1",
+    "keytar": "^4.4.1",
+    "moment": "^2.22.1",
+    "ngx-chips": "^2.0.0-beta.0",
+    "ngx-contextmenu": "^5.1.1",
+    "nodegit": "^0.24.1",
     "read-last-line": "^1.1.0",
-    "uuid": "^3.2.1"
+    "rxjs": "^6.4.0",
+    "rxjs-compat": "^6.4.0",
+    "uuid": "^3.3.2",
+    "zone.js": "^0.8.26"
   }
 }

@@ -24,7 +24,7 @@ let win
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({})
-    
+
     // init services
     secureStorage.init(win);
     fileWatcher.init(win);
@@ -101,7 +101,7 @@ function createWindow() {
     Menu.setApplicationMenu(mainMenu);
     // and load the index.html of the app.
     win.loadURL(url.format({
-        pathname:  path.join(__dirname, 'frontend/dist/index.html'),
+        pathname:  path.join(__dirname, '/dist/index.html'),
         hash: '/git',
         protocol: 'file:',
         slashes: true

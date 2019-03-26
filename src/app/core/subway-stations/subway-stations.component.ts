@@ -7,7 +7,7 @@ import { CommitSelectionService } from '../services/commit-selection.service';
 import { Subscription } from 'rxjs/Subscription';
 import { RepoService } from '../services/repo.service';
 import { CommitChangeService } from '../services/commit-change.service';
-import { ContextMenuComponent } from 'ngx-contextmenu/lib/contextMenu.component';
+import { ContextMenuComponent } from 'ngx-contextmenu';
 import { ContextMenuService } from 'ngx-contextmenu';
 
 @Component({
